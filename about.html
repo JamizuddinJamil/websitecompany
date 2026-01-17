@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about All-Planters Sdn. Bhd. - Malaysia's leading distributor of Massey Ferguson and KINTA tractors since 1993.">
+    <title>About Us | All-Planters Malaysia</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .red-glow:hover { 
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); 
+        }
+        
+        /* Light Mode Styles */
+        body.light-mode {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+        body.light-mode .glass {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        body.light-mode .text-white {
+            color: #1a1a1a !important;
+        }
+        body.light-mode .text-gray-400 {
+            color: #666666 !important;
+        }
+        body.light-mode .text-gray-500 {
+            color: #888888 !important;
+        }
+        body.light-mode .bg-white\/\[0\.01\] {
+            background: #f5f5f5 !important;
+        }
+        body.light-mode .border-white\/5 {
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-[#0f1115] text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl glass rounded-2xl p-4 z-50">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-red-600 rounded-lg shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                <span class="font-extrabold tracking-tighter text-xl italic">ALLPLANTERS</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="about.html" class="text-white transition">About</a>
+                <div class="relative group">
+                    <button class="hover:text-white transition">Products ▾</button>
+                    <div class="absolute top-full left-0 mt-2 w-48 glass rounded-xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="massey-ferguson.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg">Massey Ferguson</a>
+                        <a href="kinta.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg">KINTA</a>
+                        <a href="kinta-modular.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg">Modular Series</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-white transition">Services ▾</button>
+                    <div class="absolute top-full left-0 mt-2 w-48 glass rounded-xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="spare-parts.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg">Spare Parts</a>
+                        <a href="rental-maintenance.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg">Rental & Maintenance</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleTheme()" class="hidden md:block p-2 rounded-lg hover:bg-white/10 transition" id="themeToggle">
+                    🌙
+                </button>
+                <a href="contact.html" class="bg-white text-black px-5 py-2 rounded-xl text-sm font-bold red-glow transition-all hidden md:block">
+                    Contact 3S Center
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu md:hidden mt-4 pt-4 border-t border-white/10" id="mobileMenu">
+            <a href="index.html" class="block py-2 hover:text-red-500">Home</a>
+            <a href="about.html" class="block py-2 text-red-500">About</a>
+            <a href="massey-ferguson.html" class="block py-2 hover:text-red-500 pl-4">- Massey Ferguson</a>
+            <a href="kinta.html" class="block py-2 hover:text-red-500 pl-4">- KINTA</a>
+            <a href="kinta-modular.html" class="block py-2 hover:text-red-500 pl-4">- Modular Series</a>
+            <a href="spare-parts.html" class="block py-2 hover:text-red-500 pl-4">- Spare Parts</a>
+            <a href="rental-maintenance.html" class="block py-2 hover:text-red-500 pl-4">- Rental & Maintenance</a>
+            <a href="contact.html" class="block py-2 hover:text-red-500">Contact</a>
+            <button onclick="toggleTheme()" class="mt-2 text-left">Toggle Theme 🌙</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 px-6 max-w-7xl mx-auto text-center">
+        <div class="inline-block px-4 py-1.5 mb-6 glass rounded-full text-xs font-semibold tracking-widest text-red-500 uppercase">
+            About All-Planters
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent leading-tight">
+            A True Partner in Your<br/>Tractor Ownership &<br/>Maintenance Solution
+        </h1>
+        <p class="max-w-3xl mx-auto text-gray-400 text-lg leading-relaxed">
+            Welcome to All-Planters Sdn. Bhd., your trusted destination for all your agricultural needs. As the leading distributor of Massey Ferguson tractors in Malaysia and KINTA tractors in Southeast Asia, we take pride in providing high-quality solutions to our valued customers.
+        </p>
+    </header>
+
+    <!-- Our Story Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block px-4 py-1.5 mb-4 glass rounded-full text-xs font-semibold tracking-widest text-red-500 uppercase">
+                    Our Story
+                </div>
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Building Trust Since 1993</h2>
+                <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                    With deep roots in the tractor industry, All-Planters has earned a solid reputation throughout Malaysia. We offer a comprehensive range of agricultural equipment, implements, spare parts, and technical services, carefully tailored to meet your diverse requirements.
+                </p>
+                <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                    At All-Planters, we uphold professionalism as a cornerstone of our approach. Our experienced team, with over 30 years of industry expertise, is dedicated to continually improving every aspect of our business.
+                </p>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    By staying focused on our core values, we strive to deliver exceptional products and services that exceed your expectations.
+                </p>
+            </div>
+            <div class="glass rounded-3xl p-8 h-96 image-placeholder">
+                Company Story Image / Video Placeholder
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">What Sets Us Apart</h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">Our commitment to excellence is reflected in every aspect of our business</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Value 1 -->
+            <div class="glass rounded-3xl p-8 border-l-4 border-red-600 hover:bg-white/5 transition">
+                <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center border border-red-600/50 mb-6">
+                    <span class="text-3xl">👥</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Fully Trained Team</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    Our fully trained and dedicated sales and service support team is a source of great pride for us. With one of the largest sales and service networks in Malaysia, we guarantee attentive and professional assistance.
+                </p>
+            </div>
+
+            <!-- Value 2 -->
+            <div class="glass rounded-3xl p-8 border-l-4 border-red-600 hover:bg-white/5 transition">
+                <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center border border-red-600/50 mb-6">
+                    <span class="text-3xl">⭐</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">30+ Years Experience</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    With over 30 years in the tractor industry, our legacy ensures unparalleled experience. Count on us for peace of mind, with cutting-edge technology and top-notch service, as a trusted leader in agriculture machinery.
+                </p>
+            </div>
+
+            <!-- Value 3 -->
+            <div class="glass rounded-3xl p-8 border-l-4 border-red-600 hover:bg-white/5 transition">
+                <div class="w-16 h-16 bg-red-600/20 rounded-2xl flex items-center justify-center border border-red-600/50 mb-6">
+                    <span class="text-3xl">✓</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Genuine Parts Only</h3>
+                <p class="text-gray-400 leading-relaxed">
+                    We believe in delivering only genuine parts to optimize tractor performance. Through partnerships with AGCO Parts and KINTA Original Parts, you get high-quality components and maximum efficiency.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision & Principles Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="glass rounded-3xl p-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Our Mission, Principle & Vision</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-500">Our Mission</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        To provide machinery that not only meets but surpasses your needs. Through innovative designs, superior functionality, and a commitment to affordability, we aim to maximize your agricultural investment and contribute to your success.
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-red-500">Our Principles</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        We hold our staff in high regard, value our customers as trusted partners, and see our competitors as motivators for growth.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-red-500">Our Vision</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        Our aspiration is to be recognized as a reputable tractor company, driven by a dedication to excellence in every aspect of our operations.
+                    </p>
+                    
+                    <div class="glass rounded-2xl p-6 border-l-4 border-red-600">
+                        <p class="text-lg font-semibold mb-2">Your experience, our commitment</p>
+                        <p class="text-gray-400">
+                            We invite you to join us on this meaningful journey, where your satisfaction is our top priority.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Our Achievements</h2>
+            <p class="text-gray-400 text-lg">Recognition and awards that drive our commitment to excellence</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="glass rounded-2xl p-6 h-64 image-placeholder">
+                Award Image 1
+            </div>
+            <div class="glass rounded-2xl p-6 h-64 image-placeholder">
+                Award Image 2
+            </div>
+            <div class="glass rounded-2xl p-6 h-64 image-placeholder">
+                Award Image 3
+            </div>
+            <div class="glass rounded-2xl p-6 h-64 image-placeholder">
+                Award Image 4
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Brands Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Our Brands</h2>
+            <p class="text-gray-400 text-lg">Trusted partnerships with world-class manufacturers</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="glass rounded-2xl p-8 flex items-center justify-center h-40 hover:bg-white/5 transition">
+                <p class="text-gray-500 text-center">Massey Ferguson<br/>Logo</p>
+            </div>
+            <div class="glass rounded-2xl p-8 flex items-center justify-center h-40 hover:bg-white/5 transition">
+                <p class="text-gray-500 text-center">KINTA<br/>Logo</p>
+            </div>
+            <div class="glass rounded-2xl p-8 flex items-center justify-center h-40 hover:bg-white/5 transition">
+                <p class="text-gray-500 text-center">AGCO Parts<br/>Logo</p>
+            </div>
+            <div class="glass rounded-2xl p-8 flex items-center justify-center h-40 hover:bg-white/5 transition">
+                <p class="text-gray-500 text-center">Sparex<br/>Logo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="bg-red-600 rounded-3xl p-12 text-center shadow-2xl shadow-red-900/40">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">Ready to Experience All-Planters?</h2>
+            <p class="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
+                Explore the world of All-Planters and discover why we are the preferred choice for farmers and agricultural enthusiasts alike.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="massey-ferguson.html" class="bg-white text-red-600 px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-lg">
+                    Explore Our Products
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-red-600 transition-all">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-white/[0.01] mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-red-600 rounded-lg shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                        <span class="font-extrabold tracking-tighter text-xl italic">ALLPLANTERS</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        A True Partner in Your Tractor Ownership & Maintenance Solution.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                        <li><a href="massey-ferguson.html" class="hover:text-white transition">Products</a></li>
+                        <li><a href="spare-parts.html" class="hover:text-white transition">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="massey-ferguson.html" class="hover:text-white transition">Massey Ferguson</a></li>
+                        <li><a href="kinta.html" class="hover:text-white transition">KINTA</a></li>
+                        <li><a href="kinta-modular.html" class="hover:text-white transition">Modular Series</a></li>
+                        <li><a href="spare-parts.html" class="hover:text-white transition">Spare Parts</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>WhatsApp: <a href="https://wa.me/60122283777" class="hover:text-white transition">+60 12-228 3777</a></li>
+                        <li>Email: Coming Soon</li>
+                        <li>Kluang, Johor, Malaysia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 All-Planters Sdn. Bhd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/60122283777" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform z-50">
+        💬
+    </a>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeToggle = document.getElementById('themeToggle');
+            if (document.body.classList.contains('light-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeToggle').textContent = '☀️';
+            }
+        });
+    </script>
+
+</body>
+</html>
