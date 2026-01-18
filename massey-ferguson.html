@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Massey Ferguson tractors at All-Planters Malaysia. Official distributor with 10 models ranging from 60HP to 140HP.">
+    <title>Massey Ferguson Tractors | All-Planters Malaysia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .red-glow:hover { box-shadow: 0 0 20px rgba(220, 38, 38, 0.4); }
+        
+        body.light-mode { background: #ffffff; color: #1a1a1a; }
+        body.light-mode .glass { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(0, 0, 0, 0.1); }
+        body.light-mode .text-white { color: #1a1a1a !important; }
+        body.light-mode .text-gray-400 { color: #666666 !important; }
+        body.light-mode .text-gray-500 { color: #888888 !important; }
+        body.light-mode .bg-white\/\[0\.01\] { background: #f5f5f5 !important; }
+        body.light-mode .border-white\/5 { border-color: rgba(0, 0, 0, 0.1) !important; }
+        
+        * { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        .mobile-menu { display: none; }
+        .mobile-menu.active { display: block; }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.875rem;
+        }
+        
+        .product-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: #0f1115;
+            border-radius: 24px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        body.light-mode .modal-content {
+            background: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: sticky;
+            top: 20px;
+            right: 20px;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: #DC2626;
+        }
+
+        .spec-table {
+            width: 100%;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .spec-table tr {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .spec-table td {
+            padding: 12px 16px;
+        }
+
+        .spec-table td:first-child {
+            font-weight: 600;
+            color: #DC2626;
+        }
+
+        /* Custom Scrollbar for Modal */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #DC2626;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-[#0f1115] text-white overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl glass rounded-2xl p-4 z-50">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-red-600 rounded-lg shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                <span class="font-extrabold tracking-tighter text-xl italic">ALLPLANTERS</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="about.html" class="hover:text-white transition">About</a>
+                <div class="relative group">
+                    <button class="text-white transition">Products ▾</button>
+                    <div class="absolute top-full left-0 mt-2 w-48 glass rounded-xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="massey-ferguson.html" class="block px-4 py-2 bg-white/10 rounded-lg">Massey Ferguson</a>
+                        <a href="kinta.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg transition">KINTA</a>
+                        <a href="kinta-modular.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg transition">Modular Series</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="hover:text-white transition">Services ▾</button>
+                    <div class="absolute top-full left-0 mt-2 w-48 glass rounded-xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                        <a href="spare-parts.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg transition">Spare Parts</a>
+                        <a href="rental-maintenance.html" class="block px-4 py-2 hover:bg-white/10 rounded-lg transition">Rental & Maintenance</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="hover:text-white transition">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleTheme()" class="hidden md:block p-2 rounded-lg hover:bg-white/10 transition" id="themeToggle">🌙</button>
+                <a href="contact.html" class="bg-white text-black px-5 py-2 rounded-xl text-sm font-bold red-glow transition-all hidden md:block">Contact 3S Center</a>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu md:hidden mt-4 pt-4 border-t border-white/10" id="mobileMenu">
+            <a href="index.html" class="block py-2 hover:text-red-500">Home</a>
+            <a href="about.html" class="block py-2 hover:text-red-500">About</a>
+            <a href="massey-ferguson.html" class="block py-2 text-red-500 pl-4">- Massey Ferguson</a>
+            <a href="kinta.html" class="block py-2 hover:text-red-500 pl-4">- KINTA</a>
+            <a href="kinta-modular.html" class="block py-2 hover:text-red-500 pl-4">- Modular Series</a>
+            <a href="spare-parts.html" class="block py-2 hover:text-red-500 pl-4">- Spare Parts</a>
+            <a href="rental-maintenance.html" class="block py-2 hover:text-red-500 pl-4">- Rental & Maintenance</a>
+            <a href="contact.html" class="block py-2 hover:text-red-500">Contact</a>
+            <button onclick="toggleTheme()" class="mt-2 text-left">Toggle Theme 🌙</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 px-6 max-w-7xl mx-auto text-center">
+        <div class="mb-8 flex justify-center">
+            <div class="glass rounded-2xl p-6 inline-block image-placeholder" style="width: 300px; height: 100px;">
+                Massey Ferguson Logo
+            </div>
+        </div>
+        
+        <div class="inline-block px-4 py-1.5 mb-6 glass rounded-full text-xs font-semibold tracking-widest text-red-500 uppercase">
+            Massey Ferguson
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent leading-tight">
+            A World of Experience.<br/>Working with you.
+        </h1>
+        
+        <p class="max-w-3xl mx-auto text-gray-400 text-lg leading-relaxed mb-8">
+            An innate knowledge of the land, the farm and the machines and equipment needed to get the job done right — anywhere in the world. With more than 160 years of innovation and experience, Massey Ferguson is one of the world's leading tractor brands and a force in global harvesting business.
+        </p>
+        
+        <p class="text-xl font-bold text-white mb-4">Experience Massey Ferguson today.</p>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="max-w-7xl mx-auto px-6 pb-12">
+        <div class="glass rounded-2xl p-6">
+            <div class="flex flex-wrap gap-4 items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-400 mb-2">Filter by Power Range</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterProducts('all')" class="filter-btn px-4 py-2 rounded-lg glass hover:bg-red-600 hover:text-white transition text-sm font-medium">All Models</button>
+                        <button onclick="filterProducts('60-80')" class="filter-btn px-4 py-2 rounded-lg glass hover:bg-red-600 hover:text-white transition text-sm font-medium">60-80 HP</button>
+                        <button onclick="filterProducts('80-100')" class="filter-btn px-4 py-2 rounded-lg glass hover:bg-red-600 hover:text-white transition text-sm font-medium">80-100 HP</button>
+                        <button onclick="filterProducts('100-120')" class="filter-btn px-4 py-2 rounded-lg glass hover:bg-red-600 hover:text-white transition text-sm font-medium">100-120 HP</button>
+                        <button onclick="filterProducts('120+')" class="filter-btn px-4 py-2 rounded-lg glass hover:bg-red-600 hover:text-white transition text-sm font-medium">120+ HP</button>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-400">
+                    <span id="resultCount">10</span> models available
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="productsGrid">
+            <!-- Products will be dynamically generated here -->
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="glass rounded-3xl p-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">In-built Reliability, Integral Dependability</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        Massey Ferguson engineers have farming in their blood. They know exactly how crucial it is that a tractor meets the challenges that nature can put in the way of any farming activity.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        So whether it's making the most of short weather windows to complete jobs in the field, or battling through the elements to ensure livestock are looked after, these are machines that can be relied on all year round, in all weathers, in all environments.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        With the Massey Ferguson range, each component and every assembly has been designed to ensure rock-solid reliability and dependable operation.
+                    </p>
+                </div>
+                <div class="glass rounded-2xl p-8 h-96 image-placeholder">
+                    Massey Ferguson Brand Image
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="bg-red-600 rounded-3xl p-12 text-center shadow-2xl shadow-red-900/40">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">Find Your Perfect Massey Ferguson</h2>
+            <p class="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
+                Need help choosing the right tractor for your operations? Our expert team is ready to assist you.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/60122283777?text=Hi, I need help choosing a Massey Ferguson tractor" target="_blank" class="bg-white text-red-600 px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-lg">
+                    💬 Chat with Our Experts
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-red-600 transition-all">
+                    Schedule a Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-white/[0.01] mt-20">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-red-600 rounded-lg shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                        <span class="font-extrabold tracking-tighter text-xl italic">ALLPLANTERS</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        A True Partner in Your Tractor Ownership & Maintenance Solution.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">About</a></li>
+                        <li><a href="massey-ferguson.html" class="hover:text-white transition">Products</a></li>
+                        <li><a href="spare-parts.html" class="hover:text-white transition">Services</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Products</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="massey-ferguson.html" class="hover:text-white transition">Massey Ferguson</a></li>
+                        <li><a href="kinta.html" class="hover:text-white transition">KINTA</a></li>
+                        <li><a href="kinta-modular.html" class="hover:text-white transition">Modular Series</a></li>
+                        <li><a href="spare-parts.html" class="hover:text-white transition">Spare Parts</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>WhatsApp: <a href="https://wa.me/60122283777" class="hover:text-white transition">+60 12-228 3777</a></li>
+                        <li>Email: Coming Soon</li>
+                        <li>Kluang, Johor, Malaysia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 All-Planters Sdn. Bhd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/60122283777" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-transform z-50">
+        💬
+    </a>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content glass p-8">
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            
+            <div id="modalContentBody">
+                <!-- Content will be dynamically injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 'mf-385',
+                name: 'MF 385',
+                hp: 85,
+                category: '80-100',
+                shortDesc: 'High performance, fuel efficient, 4 cyl diesel engine. Powerful yet economical.',
+                tags: ['2WD / 4WD', '4 Cylinders'],
+                features: [
+                    { title: 'Powerful & Efficient', desc: 'Equipped with a robust and fuel-efficient engine, the MF385 delivers impressive horsepower, ensuring high productivity and performance for a wide range of tasks.', icon: '⚡' },
+                    { title: 'Smooth Handling', desc: 'Hydrostatic power steering for easy maneuvering in all conditions.', icon: '🎯' },
+                    { title: 'Heavy-duty Support', desc: 'Front weights help balance the tractor\'s weight distribution, especially when using heavy rear-mounted implements.', icon: '💪' },
+                    { title: 'Hydraulics and PTO', desc: 'Designed with powerful hydraulics and a strong PTO, allowing it to efficiently operate a variety of implements and attachments.', icon: '🔧' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '85 HP @ 2200rpm',
+                        'Max Torque': '300 Nm @ 1600rpm',
+                        'Cylinders': '4',
+                        'Capacity': '4070 cc',
+                        'Aspiration': 'Natural'
+                    },
+                    transmission: {
+                        'Type': 'Sliding Spur',
+                        'Speed': '8 forward, 2 reverse'
+                    },
+                    pto: {
+                        'Type': 'Live',
+                        'Speed': '540 @ 1789 rpm'
+                    },
+                    hydraulics: {
+                        '3-Point Linkage': 'Cat 1 & 2 interchangeable',
+                        'Lift Capacity': '2,145 kg',
+                        'Auxiliary': '16.7 litre/min'
+                    },
+                    brakes: {
+                        'Brake Type': 'Oil-immersed, multi-disc',
+                        'Steering': 'Hydrostatic'
+                    },
+                    tyres: {
+                        'Rear Tyre': '18.4 / 30 (14PR)',
+                        'Front Tyre': '12.4 / 24 (12PR)'
+                    },
+                    dimensions: {
+                        'Width': '1,871 mm',
+                        'Height': '2,485 mm',
+                        'Length': '3,760 mm (2WD) / 3,810 mm (4WD)',
+                        'Wheelbase': '2,286 mm (2WD) / 2,350 mm (4WD)',
+                        'Weight': '2,790 kg (without ballast)'
+                    },
+                    capacity: {
+                        'Fuel Capacity': '108 litres'
+                    }
+                }
+            },
+            {
+                id: 'mf-360',
+                name: 'MF 360',
+                hp: 60,
+                category: '60-80',
+                shortDesc: 'Reliable and efficient tractor designed for versatile agricultural operations.',
+                tags: ['2WD / 4WD', 'Compact'],
+                features: [
+                    { title: 'Compact Power', desc: 'Perfect size for small to medium farms with excellent fuel efficiency.', icon: '🚜' },
+                    { title: 'Versatile Performance', desc: 'Handles a wide range of agricultural tasks with ease.', icon: '⚙️' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '60 HP',
+                        'Cylinders': '3',
+                        'Type': 'Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-2615',
+                name: 'MF 2615',
+                hp: 115,
+                category: '100-120',
+                shortDesc: 'Advanced power and precision for demanding agricultural tasks.',
+                tags: ['4WD', 'High Torque'],
+                features: [
+                    { title: 'Advanced Technology', desc: 'Modern engine technology for maximum efficiency and power.', icon: '💻' },
+                    { title: 'Premium Comfort', desc: 'Ergonomic cabin design for long working hours.', icon: '🪑' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '115 HP',
+                        'Cylinders': '4',
+                        'Type': 'Turbocharged Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-2625',
+                name: 'MF 2625',
+                hp: 125,
+                category: '120+',
+                shortDesc: 'Superior performance for large-scale operations and heavy-duty work.',
+                tags: ['4WD', 'Premium'],
+                features: [
+                    { title: 'Heavy-Duty Performance', desc: 'Built for the toughest agricultural challenges.', icon: '💪' },
+                    { title: 'High Capacity', desc: 'Large fuel tank and hydraulic capacity for extended operations.', icon: '⛽' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '125 HP',
+                        'Cylinders': '4',
+                        'Type': 'Turbocharged Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-2635',
+                name: 'MF 2635',
+                hp: 135,
+                category: '120+',
+                shortDesc: 'Maximum power and efficiency for the most demanding agricultural applications.',
+                tags: ['4WD', 'Heavy Duty'],
+                features: [
+                    { title: 'Maximum Power', desc: 'Industry-leading power output for large-scale farming.', icon: '🔥' },
+                    { title: 'Superior Build', desc: 'Robust construction designed to last for years.', icon: '🏗️' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '135 HP',
+                        'Cylinders': '4',
+                        'Type': 'Turbocharged Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-290xtra',
+                name: 'MF 290Xtra',
+                hp: 90,
+                category: '80-100',
+                shortDesc: 'Extra power and features for enhanced productivity in the field.',
+                tags: ['2WD', 'Xtra Series'],
+                features: [
+                    { title: 'Xtra Features', desc: 'Enhanced specifications for improved performance.', icon: '⭐' },
+                    { title: 'Value Package', desc: 'Great features at an excellent price point.', icon: '💰' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '90 HP',
+                        'Cylinders': '4',
+                        'Type': 'Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-290t',
+                name: 'MF 290T',
+                hp: 85,
+                category: '80-100',
+                shortDesc: 'Reliable and durable tractor built for consistent performance.',
+                tags: ['2WD', 'Traditional'],
+                features: [
+                    { title: 'Proven Reliability', desc: 'Time-tested design that farmers trust.', icon: '✓' },
+                    { title: 'Easy Maintenance', desc: 'Simple design makes servicing straightforward.', icon: '🔧' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '85 HP',
+                        'Cylinders': '4',
+                        'Type': 'Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-4708',
+                name: 'MF 4708',
+                hp: 80,
+                category: '60-80',
+                shortDesc: 'Modern design with advanced features for optimal field performance.',
+                tags: ['4WD', '4700 Series'],
+                features: [
+                    { title: 'Modern Design', desc: 'Contemporary styling with advanced ergonomics.', icon: '🎨' },
+                    { title: '4WD Capability', desc: 'Enhanced traction for challenging terrain.', icon: '🏔️' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '80 HP',
+                        'Cylinders': '4',
+                        'Type': 'Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-5710',
+                name: 'MF 5710',
+                hp: 100,
+                category: '100-120',
+                shortDesc: 'Advanced technology and comfort for professional farming operations.',
+                tags: ['4WD', '5700 Series'],
+                features: [
+                    { title: 'Professional Grade', desc: 'Designed for serious farming professionals.', icon: '👔' },
+                    { title: 'Advanced Controls', desc: 'Intuitive control systems for precise operation.', icon: '🎮' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '100 HP',
+                        'Cylinders': '4',
+                        'Type': 'Turbocharged Diesel'
+                    }
+                }
+            },
+            {
+                id: 'mf-6713',
+                name: 'MF 6713',
+                hp: 140,
+                category: '120+',
+                shortDesc: 'Premium tractor with cutting-edge technology for maximum productivity.',
+                tags: ['4WD', '6700 Series'],
+                features: [
+                    { title: 'Premium Technology', desc: 'State-of-the-art features and automation.', icon: '🚀' },
+                    { title: 'Maximum Productivity', desc: 'Designed for high-output operations.', icon: '📈' },
+                    { title: 'Ultimate Comfort', desc: 'Luxury cabin with climate control and premium seating.', icon: '✨' }
+                ],
+                specs: {
+                    engine: {
+                        'Engine Power': '140 HP',
+                        'Cylinders': '6',
+                        'Type': 'Turbocharged Diesel'
+                    }
+                }
+            }
+        ];
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card glass rounded-3xl overflow-hidden" data-hp="${product.hp}" data-category="${product.category}">
+                    <div class="h-64 image-placeholder">
+                        ${product.name} Image
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold">${product.name}</h3>
+                            <span class="px-3 py-1 bg-red-600/20 text-red-500 rounded-full text-sm font-bold">${product.hp} HP</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">${product.shortDesc}</p>
+                        <div class="flex gap-2 mb-4 text-xs">
+                            ${product.tags.map(tag => `<span class="px-3 py-1 glass rounded-full">${tag}</span>`).join('')}
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="openModal('${product.id}')" class="flex-1 bg-red-600 text-white text-center py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                                View Details
+                            </button>
+                            <a href="https://wa.me/60122283777?text=Hi, I'm interested in ${product.name}" target="_blank" class="px-4 py-3 glass rounded-xl hover:bg-white/10 transition flex items-center justify-center">
+                                💬
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open Modal
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const modal = document.getElementById('productModal');
+            const modalBody = document.getElementById('modalContentBody');
+
+            // Build specs HTML
+            let specsHTML = '';
+            for (const [category, specs] of Object.entries(product.specs)) {
+                specsHTML += `
+                    <div class="mb-6">
+                        <h4 class="text-xl font-bold mb-3 capitalize text-red-500">${category}</h4>
+                        <table class="spec-table">
+                            ${Object.entries(specs).map(([key, value]) => `
+                                <tr>
+                                    <td class="w-1/3">${key}</td>
+                                    <td class="text-gray-400">${value}</td>
+                                </tr>
+                            `).join('')}
+                        </table>
+                    </div>
+                `;
+            }
+
+            modalBody.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="glass rounded-2xl p-8 h-96 image-placeholder">
+                        ${product.name} Main Image
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-extrabold mb-2">${product.name}</h2>
+                        <p class="text-2xl text-red-500 font-bold mb-4">${product.hp} HP</p>
+                        <p class="text-gray-400 text-lg mb-6">${product.shortDesc}</p>
+                        <div class="flex gap-2 mb-6">
+                            ${product.tags.map(tag => `<span class="px-4 py-2 glass rounded-full text-sm">${tag}</span>`).join('')}
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://wa.me/60122283777?text=Hi, I'm interested in ${product.name}. Can you provide more information?" target="_blank" class="flex-1 bg-red-600 text-white text-center py-4 rounded-xl font-bold hover:bg-red-700 transition">
+                                💬 Inquire via WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold mb-6">Key Features</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        ${product.features.map(feature => `
+                            <div class="glass rounded-2xl p-6 border-l-4 border-red-600">
+                                <div class="text-4xl mb-3">${feature.icon}</div>
+                                <h4 class="text-xl font-bold mb-2">${feature.title}</h4>
+                                <p class="text-gray-400">${feature.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Specifications -->
+                <div class="mb-8">
+                    <h3 class="text-3xl font-bold mb-6">Full Specifications</h3>
+                    <div class="glass rounded-2xl p-6">
+                        ${specsHTML}
+                    </div>
+                </div>
+
+                <!-- Brand Promise -->
+                <div class="glass rounded-2xl p-8 border-l-4 border-red-600">
+                    <h3 class="text-2xl font-bold mb-4">In-built Reliability, Integral Dependability</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Massey Ferguson engineers have farming in their blood. They know exactly how crucial it is that a tractor meets the challenges that nature can put in the way of any farming activity. With ${product.name}, each component and every assembly has been designed to ensure rock-solid reliability and dependable operation.
+                    </p>
+                </div>
+
+                <!-- CTA -->
+                <div class="mt-8 bg-red-600 rounded-2xl p-8 text-center">
+                    <h3 class="text-2xl font-bold text-white mb-4">Ready to Experience ${product.name}?</h3>
+                    <p class="text-red-100 mb-6">Contact our team for personalized consultation and demonstration</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://wa.me/60122283777?text=Hi, I'd like to schedule a demo for ${product.name}" target="_blank" class="bg-white text-red-600 px-8 py-3 rounded-xl font-bold hover:scale-105 transition">
+                            Schedule Demo
+                        </a>
+                        <a href="contact.html" class="border-2 border-white text-white px-8 py-3 rounded-xl font-bold hover:bg-white hover:text-red-600 transition">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Filter Products
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            let visibleCount = 0;
+            
+            products.forEach(product => {
+                const productCategory = product.dataset.category;
+                
+                if (category === 'all' || productCategory === category) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('resultCount').textContent = visibleCount;
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeToggle = document.getElementById('themeToggle');
+            if (document.body.classList.contains('light-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeToggle').textContent = '☀️';
+            }
+        });
+    </script>
+
+</body>
+</html>
